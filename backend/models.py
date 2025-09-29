@@ -1,7 +1,7 @@
 # models.py
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
-from database import Base
+from backend.database import Base
 from datetime import datetime, timezone
 
 class User(Base):

@@ -1,14 +1,22 @@
+# backend/database.py
 from motor.motor_asyncio import AsyncIOMotorClient
+import os
 
-MONGO_DETAILS = "mongodb://localhost:27017"  # Remplacer par ton MongoDB Atlas si besoin
-client = AsyncIOMotorClient(MONGO_DETAILS)
-database = client["dating_app"]
+# URL MongoDB
+MONGO_URL = os.getenv(
+    "MONGO_URL",
+    "mongodb+srv://dev:aphro_dev@test.yo2zogh.mongodb.net/?retryWrites=true&w=majority&appName=test"
+)
 
-users_collection = database.get_collection("users")
-locations_collection = database.get_collection("locations")
-likes_collection = database.get_collection("likes")
-matches_collection = database.get_collection("matches")
-crossings_collection = database.get_collection("crossings")
-tokens_collection = database.get_collection("tokens")
-messages_collection = database.get_collection("messages")
+# Création du client MongoDB asynchrone
+client = AsyncIOMotorClient(MONGO_URL)
 
+# Sélection de la base de données
+db = client["aphro_db"]
+
+# Collections
+users_collection = db["users"]
+likes_collection = db["likes"]
+tokens_collection = db["tokens"]
+messages_collection = db["messages"]
+device_tokens_collection = db["device_tokens"]

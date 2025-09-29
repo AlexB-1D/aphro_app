@@ -1,8 +1,7 @@
 # notifications.py
-from firebase_admin import messaging, credentials
 import os
 import json
-from firebase_admin import credentials, initialize_app
+from firebase_admin import messaging, credentials, initialize_app
 
 # Charger le JSON du service account depuis la variable d'environnement
 firebase_json = os.getenv("FCM_SERVICE_ACCOUNT")
