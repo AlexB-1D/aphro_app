@@ -3,10 +3,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 
 # URL MongoDB
-MONGO_URL = os.getenv(
-    "MONGO_URL",
-    "mongodb+srv://dev:aphro_dev@test.yo2zogh.mongodb.net/aphro_db?retryWrites=true&w=majority&tls=true"
-)
+MONGO_URL = os.getenv("MONGO_URL", ".")
 
 # Création du client MongoDB asynchrone
 client = AsyncIOMotorClient(MONGO_URL)
