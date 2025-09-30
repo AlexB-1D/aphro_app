@@ -1,0 +1,9 @@
+/* Import des bases Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles globaux supplémentaires */
+body {
+  @apply bg-gray-100 text-gray-900 font-sans;
+}
