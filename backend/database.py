@@ -5,7 +5,7 @@ import os
 # URL MongoDB
 MONGO_URL = os.getenv(
     "MONGO_URL",
-    "mongodb+srv://dev:aphro_dev@test.yo2zogh.mongodb.net/?retryWrites=true&w=majority&appName=test"
+    "mongodb+srv://dev:aphro_dev@test.yo2zogh.mongodb.net/aphro_db?retryWrites=true&w=majority&tls=true"
 )
 
 # Création du client MongoDB asynchrone
