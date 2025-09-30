@@ -2,6 +2,7 @@
 from fastapi import FastAPI, HTTPException, Depends, WebSocket, Request
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone, timedelta
 import asyncio, time
@@ -94,6 +95,20 @@ async def lifespan(app: FastAPI):
 # -------------------
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(RateLimiterMiddleware)
+
+origins = [
+    "http://localhost:5173",  # ton frontend en dev
+    "https://ton-frontend-distant.com",  # ajoute ton frontend deployé ici
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,   # les domaines autorisés
+    allow_credentials=True,
+    allow_methods=["*"],     # autorise GET, POST, PUT, DELETE…
+    allow_headers=["*"],     # autorise tous les headers
+)
+
 
 @app.get("/")
 async def root():
